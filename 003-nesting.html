@@ -20,6 +20,17 @@
 	*
 	*/
 
+var WantMoreFood = React.createClass({
+	render: function() {
+		return (
+			<div>
+				I want more food
+			</div>
+		);
+	}
+});
+
+
 
 	var RecipeList = React.createClass({
 	  render: function() {
@@ -35,10 +46,10 @@
 	  render: function() {
 	    return (
 	      <div>
-	        RecipeForm component text
-	      </div>
-	    );
-	  }
+					RecipeForm component text
+				</div>
+			);
+		}
 	});
 
 	var RecipeBook = React.createClass({
@@ -49,6 +60,7 @@
 	        Hello, world! I am a RecipeBook.
 	        <RecipeList/>
 	        <RecipeForm/>
+					<WantMoreFood/>
 	      </div>
 	    );
 	  }
