@@ -3,7 +3,6 @@
 <html>
 <head>
     <style type="text/css">
-
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"></script>
@@ -37,6 +36,9 @@
             _recipes.push(text);
         }
 
+        function addKitten(text){
+            _recipes.push(text);
+        }
         var RecipeStore = Flux.createStore({
             getRecipes: function(){
                return _recipes;
@@ -45,6 +47,12 @@
             if(payload.actionType === "ADD_RECIPE") {
                 addRecipe(payload.text);
                 RecipeStore.emitChange();
+
+            }
+            if(payload.actionType === "ADD_KITTEN") {
+                addKitten(payload.text);
+                RecipeStore.emitChange();
+
             }
         });
 
@@ -54,6 +62,12 @@
             addRecipe: function(text){
                return {
                   actionType: "ADD_RECIPE",
+                  text: text
+               }
+            },
+            addKitten: function(text){
+               return {
+                  actionType: "ADD_KITTEN",
                   text: text
                }
             }
@@ -86,6 +100,9 @@
             addRecipe: function(){
                 RecipeActions.addRecipe({_id: Math.floor(Math.random()*1000000)});
             },
+            addKitten: function(){
+                RecipeActions.addKitten({_id: Math.floor(Math.random()*1000000)});
+            },
             render: function() {
                 return (
                 <div className="recipes_app">
@@ -95,6 +112,7 @@
                         })}
                     </ul>
                     <button onClick={this.addRecipe}>Add recipe</button>
+                    <button onClick={this.addKitten}>Add kitten</button>
                 </div>
                 )
             }
@@ -104,5 +122,3 @@
     </script>
 </body>
 </html>
-
-
